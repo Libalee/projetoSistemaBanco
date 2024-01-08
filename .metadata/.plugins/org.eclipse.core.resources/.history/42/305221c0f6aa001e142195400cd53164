@@ -1,0 +1,5 @@
+package br.com.banco.data.vo;
+
+public class AccountVO {
+
+}

@@ -1,0 +1,51 @@
+package br.com.banco.services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import br.com.banco.converter.MyModelMapper;
+import br.com.banco.data.model.Account;
+import br.com.banco.data.vo.AccountVO;
+import br.com.banco.repository.AccountRepository;
+
+@Service
+public class AccountService {
+
+	@Autowired
+	AccountRepository accountRepository;
+	
+	MyModelMapper mapper = new MyModelMapper();
+	
+	public AccountVO create(AccountVO accountVO) {
+		// Creates ACCOUNT from AccountVO and saves it, returns original AccountVO
+		Account entity = mapper.parseAccount(accountVO, Account.class);
+		accountRepository.save(entity);
+		return accountVO;
+	}
+	
+	public AccountVO findByIdVO(Long id) {
+		// Finds Account based of the Long value given
+		// Returns AccountVO created from the Account found in the database
+		var entity = accountRepository.findById(id).orElseThrow();
+		AccountVO accountVO = mapper.parseAccountVO(entity, AccountVO.class);
+		return accountVO;
+	}
+	
+	public AccountVO update(AccountVO accountVO) {
+		// Finds Account based of the key value from account VO
+		var account = accountRepository.getReferenceById(accountVO.getKey());
+		
+		// Updates the Account found
+		account = mapper.parseAccount(accountVO, Account.class);
+		
+		// Saves the updated Account and returns the original account VO
+		return mapper.parseAccountVO(accountRepository.save(account), AccountVO.class);
+	}
+	
+	public void delete(Long id) {
+		// Deletes Account based on the id, returns nothing.
+		Account entity = accountRepository.findById(id).orElseThrow();
+		accountRepository.delete(entity);
+	}
+	
+}

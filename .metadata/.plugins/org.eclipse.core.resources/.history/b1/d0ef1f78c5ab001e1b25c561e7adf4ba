@@ -1,0 +1,20 @@
+package br.com.banco.converter;
+
+import org.modelmapper.PropertyMap;
+
+import br.com.banco.data.model.Account;
+import br.com.banco.data.vo.AccountVO;
+
+public class ModelMapperOrderVoToObj extends PropertyMap<AccountVO, Account>{
+
+	@Override
+	protected void configure() {
+		map().setFirstName(source.getFullName().split(" ", 2)[0]);
+		map().setLastName(source.getFullName().split(" ", 2)[1]);
+		map().setEmailAdress(source.getEmailAdress());
+		map().setHomeAdress(source.getHomeAdress());
+		map().setGender(source.getGender());
+		map().setAccountNumber(source.getAccountNumber());
+		map().setAccountBalance(source.getAccountBalance());
+	}
+}

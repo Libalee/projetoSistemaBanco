@@ -1,0 +1,23 @@
+package br.com.banco;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import br.com.banco.converter.MyModelMapper;
+import br.com.banco.data.model.Account;
+import br.com.banco.data.vo.AccountVO;
+
+@SpringBootApplication
+public class ServicoBancoApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(ServicoBancoApplication.class, args);
+	}
+	
+	Account account = new Account();
+	AccountVO accountVO = new AccountVO();
+	
+	Account account2 = MyModelMapper.parseObject(accountVO, account.getClass());
+	
+
+}

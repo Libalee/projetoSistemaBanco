@@ -1,0 +1,36 @@
+package br.com.banco.services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.mysql.cj.protocol.AuthenticationProvider;
+
+import br.com.banco.converter.MyModelMapper;
+import br.com.banco.data.model.Account;
+import br.com.banco.data.vo.AccountVO;
+import br.com.banco.repository.AccountRepository;
+
+
+public class AccountService {
+
+	@Autowired
+	AccountRepository accountRepository;
+	
+	public AccountVO create(AccountVO accountVO) {
+		Account entity = MyModelMapper.parseAccount(accountVO, Account.class);
+		accountRepository.save(entity);
+		return accountVO;
+	}
+	
+	public AccountVO findById(Long id) {
+		var entity = accountRepository.findById(id);
+		AccountVO accountVO = MyModelMapper.parseAccountVO(entity, AccountVO.class);
+		return accountVO;
+	}
+	
+	public AccountVO update(AccountVO accountVO) {
+		Account account = MyModelMapper.parseObject(findById(accountVO.getKey()), Account.class);
+		return null;
+	}
+	
+	
+}

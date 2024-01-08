@@ -1,0 +1,29 @@
+package br.com.banco.controller;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import br.com.banco.converter.MathConverter;
+import br.com.banco.data.vo.AccountVO;
+import br.com.banco.services.AccountService;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+
+
+@RestController
+@RequestMapping("/api/account/v1")
+public class AccountController {
+
+	@Autowired
+	AccountService accountService;
+	
+	@GetMapping("/{id}")
+	public AccountVO getMethodName(@RequestParam String id) {
+		return accountService.findByIdVO(MathConverter.convertLong(id));
+	}
+	
+
+}

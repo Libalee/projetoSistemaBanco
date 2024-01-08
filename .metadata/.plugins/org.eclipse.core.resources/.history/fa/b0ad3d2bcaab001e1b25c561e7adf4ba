@@ -1,0 +1,68 @@
+package br.com.banco.converter;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeMap;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import br.com.banco.data.model.Account;
+import br.com.banco.data.vo.AccountVO;
+
+public class MyModelMapper {
+
+	@Autowired
+	static ModelMapperOrderVoToObj mapperOrderVoToObj;
+
+	private static ModelMapper mapper = new ModelMapper();
+
+	public static <O, D> D parseObject(O origin, Class<D> destination) {
+
+		return mapper.map(origin, destination);
+	}
+
+	public static Account parseAccount(AccountVO origin, Account destination) {
+		TypeMap<AccountVO, Account> typeMap = mapper.createTypeMap(AccountVO.class, Account.class);
+		// Setting Mapping properties.
+		typeMap.addMappings(mapper -> mapper.map(
+				src -> src.getFullName().split(" ", 2)[0], Account::setFirstName));
+		typeMap.addMappings(mapper -> mapper.map(
+				src -> src.getFullName().split(" ", 2)[1], Account::setLastName));
+		typeMap.addMappings(mapper -> mapper.map(AccountVO::getEmailAdress, Account::setEmailAdress));
+		typeMap.addMappings(mapper -> mapper.map(AccountVO::getGender, Account::setGender));
+		typeMap.addMappings(mapper -> mapper.map(AccountVO::getHomeAdress, Account::setHomeAdress));
+		typeMap.addMappings(mapper -> mapper.map(AccountVO::getAccountNumber, Account::setAccountNumber));
+		typeMap.addMappings(mapper -> mapper.map(AccountVO::getAccountBalance, Account::setAccountBalance));
+		// Mapping
+		mapper.map(origin, destination);
+		return destination;
+	}
+	
+	public static Account parseAccountVO(Account origin, AccountVO destination) {
+		TypeMap<AccountVO, Account> typeMap = mapper.createTypeMap(AccountVO.class, Account.class);
+		// Setting Mapping properties.
+		typeMap.addMappings(mapper -> mapper.map(
+				src -> src.getFullName().split(" ", 2)[0], Account::setFirstName));
+		typeMap.addMappings(mapper -> mapper.map(
+				src -> src.getFullName().split(" ", 2)[1], Account::setLastName));
+		typeMap.addMappings(mapper -> mapper.map(AccountVO::getEmailAdress, Account::setEmailAdress));
+		typeMap.addMappings(mapper -> mapper.map(AccountVO::getGender, Account::setGender));
+		typeMap.addMappings(mapper -> mapper.map(AccountVO::getHomeAdress, Account::setHomeAdress));
+		typeMap.addMappings(mapper -> mapper.map(AccountVO::getAccountNumber, Account::setAccountNumber));
+		typeMap.addMappings(mapper -> mapper.map(AccountVO::getAccountBalance, Account::setAccountBalance));
+		// Mapping
+		mapper.map(origin, destination);
+		return destination;
+	}
+
+
+	public static <O, D> List<D> parseListObject(List<O> origin, Class<D> destination) {
+		List<D> list = new ArrayList<D>();
+		for (O o : origin) {
+			list.add(parseObject(o, destination));
+		}
+		return list;
+	}
+}
