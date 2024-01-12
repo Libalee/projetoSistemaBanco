@@ -44,10 +44,10 @@ INDEX VERSION 1.134+C:\Users\Libale\Desktop\Torrent\Curso Java\projetoSistemaBan
 3256022673.index
 1668491043.index
 2911847389.index
-898858983.index
-1882883666.index
-1979322553.index
 1915615187.index
+1882883666.index
+898858983.index
+1979322553.index
 2504739717.index
 113047591.index
 2327858291.index
