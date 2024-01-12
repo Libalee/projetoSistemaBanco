@@ -1,8 +1,14 @@
 package br.com.banco.services;
 
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import br.com.banco.controller.AccountController;
 import br.com.banco.converter.MyModelMapper;
 import br.com.banco.data.model.Account;
 import br.com.banco.data.vo.AccountVO;
@@ -23,11 +29,17 @@ public class AccountService {
 		return accountVO;
 	}
 	
+	public Page<AccountVO> findAll(Pageable pageable) {
+		var page = accountRepository.findAll(pageable);
+		return page.map(entityAccount -> mapper.parseAccountVO(entityAccount, AccountVO.class));
+	}
+	
 	public AccountVO findByIdVO(Long id) {
 		// Finds Account based of the Long value given
 		// Returns AccountVO created from the Account found in the database
 		var entity = accountRepository.findById(id).orElseThrow();
 		AccountVO accountVO = mapper.parseAccountVO(entity, AccountVO.class);
+		accountVO.add(linkTo(methodOn(AccountController.class).findById(Long.toString(id))).withSelfRel());
 		return accountVO;
 	}
 	

@@ -3,11 +3,13 @@ package br.com.banco.data.vo;
 import java.io.Serializable;
 import java.util.Objects;
 
+import org.springframework.hateoas.RepresentationModel;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonPropertyOrder({"id", "fullName", "emailAdress", "gender", "homeAdress", "accountNumber", "accountBalance"})
-public class AccountVO implements Serializable{
+public class AccountVO extends RepresentationModel<AccountVO> implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 

@@ -24,8 +24,23 @@ public class AccountController {
 	@Autowired
 	AccountService accountService;
 	
+//	@GetMapping
+//	public ResponseEntity<?> findAll(
+//			@RequestParam(value="page", defaultValue = "0") int page,
+//			@RequestParam(value="limit", defaultValue = "10") int limit,
+//			@RequestParam(value="direction", defaultValue = "asc") String direction
+//			) {
+//		var sortDirection = "desc".equalsIgnoreCase(direction) ? Direction.DESC : Direction.ASC;
+//		
+//		Pageable pageable = PageRequest.of(page, limit, Sort.by(sortDirection));
+//		
+//		Page<AccountVO> accounts = accountService.findAll(pageable);
+//		
+//		return new ResponseEntity<>(accounts, HttpStatus.OK);
+//	}
+	
 	@GetMapping("/{id}")
-	public AccountVO getMethodName(@PathVariable("id") String id) {
+	public AccountVO findById(@PathVariable("id") String id) {
 		return accountService.findByIdVO(MathConverter.convertLong(id));
 	}
 	
