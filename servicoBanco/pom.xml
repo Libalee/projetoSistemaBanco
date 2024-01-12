@@ -58,6 +58,18 @@
 		    <version>1.1.1.RELEASE</version>
 		</dependency>
 		
+		<!--  Xml dateformat support-->
+		<dependency>
+		    <groupId>com.fasterxml.jackson.dataformat</groupId>
+		    <artifactId>jackson-dataformat-xml</artifactId>
+		</dependency>
+		
+		<!--  Yaml dateformat support-->
+		<dependency>
+		    <groupId>com.fasterxml.jackson.dataformat</groupId>
+		    <artifactId>jackson-dataformat-yaml</artifactId>
+		</dependency>
+		
 		<!-- MYSQL connector -->
 		<dependency>
             <groupId>mysql</groupId>
