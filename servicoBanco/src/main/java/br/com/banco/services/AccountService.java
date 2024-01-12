@@ -26,6 +26,7 @@ public class AccountService {
 		// Creates ACCOUNT from AccountVO and saves it, returns original AccountVO
 		Account entity = mapper.parseAccount(accountVO, Account.class);
 		accountRepository.save(entity);
+		accountVO.add(linkTo(methodOn(AccountController.class).findById(Long.toString(accountVO.getKey()))).withSelfRel());
 		return accountVO;
 	}
 	
@@ -57,7 +58,9 @@ public class AccountService {
 		account.setAccountBalance(accountVO.getAccountBalance());
 		
 		// Saves the updated Account and returns the original account VO
-		return mapper.parseAccountVO(accountRepository.save(account), AccountVO.class);
+//		AccountVO vo = mapper.parseAccountVO(accountRepository.save(account), AccountVO.class);
+		accountVO.add(linkTo(methodOn(AccountController.class).findById(Long.toString(accountVO.getKey()))).withSelfRel());
+		return accountVO;
 	}
 	
 	public void delete(Long id) {

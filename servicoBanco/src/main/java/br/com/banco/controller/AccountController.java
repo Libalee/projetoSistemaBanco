@@ -39,7 +39,7 @@ public class AccountController {
 //		return new ResponseEntity<>(accounts, HttpStatus.OK);
 //	}
 	
-	@GetMapping("/{id}")
+	@GetMapping(value = "/{id}", produces = {"application/json", "application/xml", "application/x-yaml"})
 	public AccountVO findById(@PathVariable("id") String id) {
 		return accountService.findByIdVO(MathConverter.convertLong(id));
 	}

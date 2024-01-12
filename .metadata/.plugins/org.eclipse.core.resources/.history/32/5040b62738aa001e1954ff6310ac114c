@@ -1,5 +1,0 @@
-ckage br.com.banco.repository;
-
-public interface AccountRepository2 {
-
-}

@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="org.springframework.http.converter.HttpMessageConverter"/>
-    <fullyQualifiedTypeName name="org.springframework.web.servlet.config.annotation.CorsRegistry"/>
-    <fullyQualifiedTypeName name="org.apache.tomcat.util.modeler.Registry"/>
     <fullyQualifiedTypeName name="java.lang.Override"/>
     <fullyQualifiedTypeName name="org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer"/>
     <fullyQualifiedTypeName name="org.springframework.http.MediaType"/>
@@ -43,7 +40,6 @@
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PutMapping"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestBody"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.DeleteMapping"/>
-    <fullyQualifiedTypeName name="br.com.banco.converter.MathConverter"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
     <fullyQualifiedTypeName name="br.com.banco.repository.AccountRepository"/>
     <fullyQualifiedTypeName name="java.util.Optional"/>
@@ -56,8 +52,12 @@
     <fullyQualifiedTypeName name="org.springframework.data.domain.Page"/>
     <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
     <fullyQualifiedTypeName name="org.springframework.data.web.PagedResourcesAssembler"/>
-    <fullyQualifiedTypeName name="br.com.banco.data.vo.AccountVO"/>
     <fullyQualifiedTypeName name="org.springframework.http.ResponseEntity"/>
     <fullyQualifiedTypeName name="org.springframework.http.HttpStatus"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
+    <fullyQualifiedTypeName name="org.springframework.hateoas.RepresentationModel"/>
+    <fullyQualifiedTypeName name="org.springframework.hateoas.server.mvc.WebMvcLinkBuilder"/>
+    <fullyQualifiedTypeName name="br.com.banco.controller.AccountController"/>
+    <fullyQualifiedTypeName name="br.com.banco.converter.MathConverter"/>
+    <fullyQualifiedTypeName name="br.com.banco.data.vo.AccountVO"/>
 </qualifiedTypeNameHistroy>

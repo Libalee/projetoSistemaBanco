@@ -1,6 +1,0 @@
-package br.com.banco.data.model;
-
-@Table
-public class Account {
-
-}
